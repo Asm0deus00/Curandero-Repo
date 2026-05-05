@@ -1,0 +1,598 @@
+fileFormatVersion: 2
+guid: 2eb0e9745f26b71439a837f3b15d4838
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 5879371872659644733
+    second: Lower mouth_0
+  - first:
+      213: -7737203431263367949
+    second: Lower mouth_1
+  - first:
+      213: 3884012166850167423
+    second: Lower mouth_2
+  - first:
+      213: 2918102772717392425
+    second: Lower mouth_3
+  - first:
+      213: 442743777427336096
+    second: Lower mouth_4
+  - first:
+      213: 8088288662046798891
+    second: Lower mouth_5
+  - first:
+      213: -7662993111432740672
+    second: Lower mouth_6
+  - first:
+      213: 8411648099597937107
+    second: Lower mouth_7
+  - first:
+      213: 6512571017113785313
+    second: Lower mouth_8
+  - first:
+      213: 8396987690376394380
+    second: Lower mouth_9
+  - first:
+      213: 4343775620063909089
+    second: Lower mouth_10
+  - first:
+      213: 2232261351666126483
+    second: Lower mouth_11
+  - first:
+      213: 4455712685591350285
+    second: Lower mouth_12
+  - first:
+      213: 2512898339025336263
+    second: Lower mouth_13
+  - first:
+      213: 2667241849616961407
+    second: Lower mouth_14
+  - first:
+      213: 5159040089409313610
+    second: Lower mouth_15
+  - first:
+      213: -6716974092183254391
+    second: Lower mouth_16
+  - first:
+      213: 419965445152807521
+    second: Lower mouth_17
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 1
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Lower mouth_0
+      rect:
+        serializedVersion: 2
+        x: 480
+        y: 923
+        width: 9
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d312d446199b79150800000000000000
+      internalID: 5879371872659644733
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Lower mouth_1
+      rect:
+        serializedVersion: 2
+        x: 480
+        y: 715
+        width: 9
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3fc0d94097eef9490800000000000000
+      internalID: -7737203431263367949
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Lower mouth_2
+      rect:
+        serializedVersion: 2
+        x: 619
+        y: 147
+        width: 703
+        height: 485
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f724664cc78c6e530800000000000000
+      internalID: 3884012166850167423
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Lower mouth_3
+      rect:
+        serializedVersion: 2
+        x: 1430
+        y: 602
+        width: 10
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 92217e1d20f2f7820800000000000000
+      internalID: 2918102772717392425
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Lower mouth_4
+      rect:
+        serializedVersion: 2
+        x: 1430
+        y: 586
+        width: 9
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0ab221cae11f42600800000000000000
+      internalID: 442743777427336096
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Lower mouth_5
+      rect:
+        serializedVersion: 2
+        x: 1333
+        y: 587
+        width: 10
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b247e1e3faf5f3070800000000000000
+      internalID: 8088288662046798891
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Lower mouth_6
+      rect:
+        serializedVersion: 2
+        x: 581
+        y: 522
+        width: 17
+        height: 56
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0c049cc8d5497a590800000000000000
+      internalID: -7662993111432740672
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Lower mouth_7
+      rect:
+        serializedVersion: 2
+        x: 1328
+        y: 546
+        width: 15
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3d9ef18316d2cb470800000000000000
+      internalID: 8411648099597937107
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Lower mouth_8
+      rect:
+        serializedVersion: 2
+        x: 583
+        y: 504
+        width: 10
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1e35291c5dc416a50800000000000000
+      internalID: 6512571017113785313
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Lower mouth_9
+      rect:
+        serializedVersion: 2
+        x: 502
+        y: 406
+        width: 14
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c867634b0d7188470800000000000000
+      internalID: 8396987690376394380
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Lower mouth_10
+      rect:
+        serializedVersion: 2
+        x: 1406
+        y: 393
+        width: 13
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1e459e189e0384c30800000000000000
+      internalID: 4343775620063909089
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Lower mouth_11
+      rect:
+        serializedVersion: 2
+        x: 527
+        y: 296
+        width: 15
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 39e84ef4fd59afe10800000000000000
+      internalID: 2232261351666126483
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Lower mouth_12
+      rect:
+        serializedVersion: 2
+        x: 586
+        y: 300
+        width: 9
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d0ccfd5841fd5dd30800000000000000
+      internalID: 4455712685591350285
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Lower mouth_13
+      rect:
+        serializedVersion: 2
+        x: 1350
+        y: 287
+        width: 28
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7c73646b9bb9fd220800000000000000
+      internalID: 2512898339025336263
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Lower mouth_14
+      rect:
+        serializedVersion: 2
+        x: 592
+        y: 287
+        width: 9
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f7f8970a452f30520800000000000000
+      internalID: 2667241849616961407
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Lower mouth_15
+      rect:
+        serializedVersion: 2
+        x: 1384
+        y: 286
+        width: 23
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a4bdd37a0a7989740800000000000000
+      internalID: 5159040089409313610
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Lower mouth_16
+      rect:
+        serializedVersion: 2
+        x: 1328
+        y: 229
+        width: 12
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 98a4ae5b6a388c2a0800000000000000
+      internalID: -6716974092183254391
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Lower mouth_17
+      rect:
+        serializedVersion: 2
+        x: 605
+        y: 189
+        width: 9
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 16a9548e85404d500800000000000000
+      internalID: 419965445152807521
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      Lower mouth_0: 5879371872659644733
+      Lower mouth_1: -7737203431263367949
+      Lower mouth_10: 4343775620063909089
+      Lower mouth_11: 2232261351666126483
+      Lower mouth_12: 4455712685591350285
+      Lower mouth_13: 2512898339025336263
+      Lower mouth_14: 2667241849616961407
+      Lower mouth_15: 5159040089409313610
+      Lower mouth_16: -6716974092183254391
+      Lower mouth_17: 419965445152807521
+      Lower mouth_2: 3884012166850167423
+      Lower mouth_3: 2918102772717392425
+      Lower mouth_4: 442743777427336096
+      Lower mouth_5: 8088288662046798891
+      Lower mouth_6: -7662993111432740672
+      Lower mouth_7: 8411648099597937107
+      Lower mouth_8: 6512571017113785313
+      Lower mouth_9: 8396987690376394380
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
