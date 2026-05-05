@@ -21,19 +21,34 @@ public class GameManager : MonoBehaviour
     public float moveSpeed = 4f;
 
     private PatientData currentPatient;
+    private bool isTransitioning = false;
+    private NightManager nightManager;
+
+    // ----------------------------
+    void Awake()
+    {
+        nightManager = FindObjectOfType<NightManager>();
+    }
 
     // ----------------------------
     public void StartGame()
     {
+        isTransitioning = false;
         StartCoroutine(NewPatientSequence());
     }
 
     // ----------------------------
     public void ProcessTreatment(Dictionary<SymptomTag, int> mix)
     {
+        // Do nothing if the night is already over or a transition is in progress
+        if (nightManager != null && (!nightManager.IsNightActive() || nightManager.IsInTransition()))
+            return;
+
+        if (isTransitioning) return;
+
         bool success = Evaluate(mix, currentPatient);
 
-        FindObjectOfType<NightManager>().RegisterResult(success);
+        nightManager.RegisterResult(success);
 
         StartCoroutine(Transition());
     }
@@ -41,9 +56,19 @@ public class GameManager : MonoBehaviour
     // ----------------------------
     IEnumerator Transition()
     {
+        isTransitioning = true;
+
         dialogue.HideDialogue();
 
         yield return StartCoroutine(MovePatient(GetExitPosition()));
+
+        // Check after the exit walk — the night may have ended while the
+        // patient was walking out.
+        if (nightManager != null && (!nightManager.IsNightActive() || nightManager.IsInTransition()))
+        {
+            isTransitioning = false;
+            yield break;
+        }
 
         currentPatient = generator.GeneratePatient();
         visualGenerator.GeneratePatient();
@@ -52,7 +77,18 @@ public class GameManager : MonoBehaviour
 
         yield return StartCoroutine(MovePatient(centerPosition));
 
+        // Check once more after the enter walk — the night could have ended
+        // during that animation, causing ShowPatient to fire on top of the
+        // result text. This closes that second race window.
+        if (nightManager != null && (!nightManager.IsNightActive() || nightManager.IsInTransition()))
+        {
+            isTransitioning = false;
+            yield break;
+        }
+
         dialogue.ShowPatient(currentPatient);
+
+        isTransitioning = false;
     }
 
     // ----------------------------
@@ -71,7 +107,11 @@ public class GameManager : MonoBehaviour
     // ----------------------------
     public IEnumerator ForcePatientExit()
     {
+        // Stop any in-progress transition coroutine by just moving to exit cleanly.
+        // The patient may already be mid-walk; MovePatient handles that gracefully.
         yield return StartCoroutine(MovePatient(GetExitPosition()));
+
+        isTransitioning = false;
     }
 
     // ----------------------------

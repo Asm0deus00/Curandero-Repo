@@ -15,16 +15,16 @@ public class NightManager : MonoBehaviour
 
     [Header("UI Fix (Move Offscreen)")]
     public RectTransform mixButton;
-    
     public RectTransform timerText;
 
+    // Saved in Awake so RestoreUI is always safe to call
     private Vector2 mixOriginalPos;
     private Vector2 timerOriginalPos;
 
     [Header("Camera Transition")]
-    public Transform cameraTransform;
-    public Vector3 titlePosition;
-    public float cameraMoveSpeed = 2f;
+    public SimpleCameraMove cameraMove;
+    public Transform gameAnchor;   // Anchor for the patient/game view
+    public Transform titleAnchor;  // Anchor for the title screen
 
     [Header("Progression")]
     public int currentNight = 1;
@@ -35,27 +35,34 @@ public class NightManager : MonoBehaviour
 
     private float timer;
     private bool nightActive = false;
+    private bool isInTransition = false; // Guards pause and double-EndNight calls
 
     private int totalPatients = 0;
     private int correctPatients = 0;
+
+    // ----------------------------
+    void Awake()
+    {
+        // Save UI positions here so RestoreUI() is always safe,
+        // even if called before StartNight() (e.g. from ResetGameState).
+        if (mixButton != null)
+            mixOriginalPos = mixButton.anchoredPosition;
+
+        if (timerText != null)
+            timerOriginalPos = timerText.anchoredPosition;
+    }
 
     // ----------------------------
     public void StartNight()
     {
         timer = nightDuration;
         nightActive = true;
+        isInTransition = false;
 
         totalPatients = 0;
         correctPatients = 0;
 
         SetOverlayAlpha(0f);
-
-        if (mixButton != null)
-            mixOriginalPos = mixButton.anchoredPosition;
-
-
-        if (timerText != null)
-            timerOriginalPos = timerText.anchoredPosition;
 
         RestoreUI();
 
@@ -95,7 +102,11 @@ public class NightManager : MonoBehaviour
     // ----------------------------
     void EndNight()
     {
+        // Guard against being called twice (timer tick + debug skip race)
+        if (isInTransition) return;
+
         nightActive = false;
+        isInTransition = true;
 
         dialogue.HideDialogue();
 
@@ -105,19 +116,34 @@ public class NightManager : MonoBehaviour
     // ----------------------------
     IEnumerator EndSequence()
     {
+        // Disable GameManager immediately so ProcessTreatment can't
+        // fire a new Transition() while the end sequence is running.
         gameManager.enabled = false;
 
         HideUI();
 
+        // 1. Move patient off screen first (while camera may still be at mix station)
         if (gameManager != null)
             yield return StartCoroutine(gameManager.ForcePatientExit());
 
+        // 2. Move camera back to the patient/game view before fading in,
+        //    so the result message always appears in the right place.
+        cameraMove.MoveTo(gameAnchor);
+        yield return new WaitForSeconds(cameraMove.moveDuration);
+
+        // 3. Fade screen to black
         yield return StartCoroutine(FadeIn());
 
         yield return new WaitForSeconds(0.5f);
 
-        float ratio = totalPatients == 0 ? 0f : (float)correctPatients / totalPatients;
+        // 4. Show result message.
+        // Restore text alpha to fully visible before typing — FadeOutText() leaves
+        // it at 0, which would make subsequent nights render invisible text.
+        Color textColor = resultText.textUI.color;
+        textColor.a = 1f;
+        resultText.textUI.color = textColor;
 
+        float ratio = totalPatients == 0 ? 0f : (float)correctPatients / totalPatients;
         string message = GetResultMessage(ratio);
 
         resultText.StartTyping(message);
@@ -127,11 +153,13 @@ public class NightManager : MonoBehaviour
 
         yield return new WaitForSeconds(3.5f);
 
+        // 5. Fade out the result text, then clear it
         yield return StartCoroutine(FadeOutText());
 
         resultText.StopTyping();
         resultText.ClearText();
 
+        // 6. Branch: game over / next night / final night
         if (ratio < 0.3f)
         {
             yield return StartCoroutine(ReturnToTitle());
@@ -140,11 +168,13 @@ public class NightManager : MonoBehaviour
         {
             currentNight++;
 
+            // Fade out overlay so the next night starts clean
             yield return StartCoroutine(FadeOut());
 
             RestoreUI();
 
             gameManager.enabled = true;
+            isInTransition = false;
             StartNight();
         }
         else
@@ -154,6 +184,8 @@ public class NightManager : MonoBehaviour
     }
 
     // ----------------------------
+    // Fade out only the result text (not the black overlay).
+    // Bug fix: was incorrectly resetting alpha to 1 after the loop.
     IEnumerator FadeOutText()
     {
         TextMeshProUGUI text = resultText.textUI;
@@ -164,13 +196,13 @@ public class NightManager : MonoBehaviour
         while (t > 0f)
         {
             t -= Time.deltaTime * 0.5f;
-            c.a = t;
+            c.a = Mathf.Max(t, 0f);
             text.color = c;
-
             yield return null;
         }
 
-        c.a = 1f;
+        // Leave alpha at 0 (was wrongly set to 1 before)
+        c.a = 0f;
         text.color = c;
     }
 
@@ -179,21 +211,10 @@ public class NightManager : MonoBehaviour
     {
         yield return new WaitForSeconds(1f);
 
-        // Move camera
-        while (Vector3.Distance(cameraTransform.position, titlePosition) > 0.05f)
-        {
-            cameraTransform.position = Vector3.Lerp(
-                cameraTransform.position,
-                titlePosition,
-                Time.deltaTime * cameraMoveSpeed
-            );
+        cameraMove.MoveTo(titleAnchor);
+        yield return new WaitForSeconds(cameraMove.moveDuration);
 
-            yield return null;
-        }
-
-        cameraTransform.position = titlePosition;
-
-        // 🔴 FADE OUT OVERLAY AFTER ARRIVAL
+        // Fade out overlay after arriving at title
         yield return StartCoroutine(FadeOut());
 
         ResetGameState();
@@ -203,7 +224,9 @@ public class NightManager : MonoBehaviour
     public void ResetGameState()
     {
         currentNight = 1;
+        isInTransition = false;
 
+        // UI positions were saved in Awake, so this is always safe
         RestoreUI();
 
         resultText.ClearText();
@@ -287,13 +310,9 @@ public class NightManager : MonoBehaviour
     }
 
     // ----------------------------
-    public float GetRemainingTime()
-    {
-        return timer;
-    }
+    public float GetRemainingTime() => timer;
 
-    public bool IsNightActive()
-    {
-        return nightActive;
-    }
+    public bool IsNightActive() => nightActive;
+
+    public bool IsInTransition() => isInTransition;
 }

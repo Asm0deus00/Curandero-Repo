@@ -38,6 +38,13 @@ public class TitleController : MonoBehaviour
         baseScale = title.localScale;
     }
 
+    // Reset state every time this object is enabled (e.g. when returning to title).
+    void OnEnable()
+    {
+        isClicked = false;
+        isHovering = false;
+    }
+
     void Update()
     {
         float targetJaw;
@@ -116,5 +123,10 @@ public class TitleController : MonoBehaviour
         yield return new WaitForSeconds(clickDelay);
 
         FindObjectOfType<TitleManager>().StartGame();
+
+        // Reset after handing off to TitleManager.
+        // The game object will be deactivated by NightManager shortly after,
+        // but resetting here ensures clean state if StartGame ever fails.
+        isClicked = false;
     }
 }

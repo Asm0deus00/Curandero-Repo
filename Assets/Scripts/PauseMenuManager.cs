@@ -21,6 +21,9 @@ public class PauseMenuManager : MonoBehaviour
     private Vector3 titleBaseScale;
     private Vector3 titleBasePos;
 
+    // Reference to NightManager so we can block pause during transitions
+    private NightManager nightManager;
+
     void Awake()
     {
         hiddenLocalPosition = transform.localPosition;
@@ -30,6 +33,8 @@ public class PauseMenuManager : MonoBehaviour
             titleBaseScale = pausedTitle.transform.localScale;
             titleBasePos   = pausedTitle.transform.localPosition;
         }
+
+        nightManager = FindObjectOfType<NightManager>();
     }
 
     void Update()
@@ -58,8 +63,23 @@ public class PauseMenuManager : MonoBehaviour
 
     public void TogglePause()
     {
-        if (isPaused) Resume();
-        else Pause();
+        if (isPaused)
+        {
+            Resume();
+        }
+        else
+        {
+            // Block pause during end-of-night transitions so coroutines
+            // (camera moves, fades, result text) don't freeze permanently.
+            if (nightManager != null && nightManager.IsInTransition())
+                return;
+
+            // Also block if no night is active (title screen, etc.)
+            if (nightManager != null && !nightManager.IsNightActive())
+                return;
+
+            Pause();
+        }
     }
 
     void Pause()
@@ -96,5 +116,10 @@ public class PauseMenuManager : MonoBehaviour
         transform.localPosition = to;
     }
 
-    void OnApplicationQuit() => PlayerPrefs.Save();
+    // Make sure timeScale is restored if the game quits while paused
+    void OnApplicationQuit()
+    {
+        Time.timeScale = 1f;
+        PlayerPrefs.Save();
+    }
 }
